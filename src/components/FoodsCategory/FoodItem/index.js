@@ -1,5 +1,6 @@
+import { useDispatch } from 'react-redux'
 import './index.scss'
-
+import { addCar } from '../../../store/modules/takeaway'
 const Foods = ({
   id,
   picture,
@@ -13,7 +14,7 @@ const Foods = ({
   tag,
   count
 }) => {
-
+  const dispatch = useDispatch()
   return (
     <dd className="cate-goods">
       <div className="goods-img-wrap">
@@ -38,7 +39,19 @@ const Foods = ({
             {price}
           </div>
           <div className="goods-count">
-            <span className="plus"></span>
+            <span className="plus" onClick={()=>(dispatch(addCar({
+               id,
+               picture,
+               name,
+               unit,
+               description,
+               food_tag_list,
+               month_saled,
+               like_ratio_desc,
+               price,
+               tag,
+               count,
+            })))} ></span>
           </div>
         </div>
       </div>
